@@ -5,6 +5,7 @@ import org.h2.tools.RunScript;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
@@ -53,7 +54,7 @@ public class Database {
      * @throws SQLException In case of a database error
      */
     public Connection getConnection() throws SQLException {
-        Connection connection = null;
+        Connection connection = DriverManager.getConnection(url, user, password);
 
         if(!isInitialized && connection != null) {
             initializeDatabase(connection);
